@@ -14,6 +14,11 @@ public class block extends Actor
      */
     public void act()
     {
-        // Add your action code here.
+        int clockwise = getRotation() + 2;
+        if(clockwise == 360){
+            clockwise = 0;
+        }
+        setRotation(clockwise);
+        
     }
 }
