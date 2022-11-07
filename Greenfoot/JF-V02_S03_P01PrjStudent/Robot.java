@@ -17,6 +17,7 @@ public class Robot extends Actor
     private GreenfootImage robotimage2; 
     private int liveCo = 3; 
     private int pizzaEaten = 0;
+    private int score = 0;    
     
     public Robot()
     {
@@ -31,7 +32,7 @@ public class Robot extends Actor
         robotMovement();
         detectWallCollision();
         detectBlockCollision();
-        pizzaEaten();
+        eatPizza();
     }
     public void robotMovement(){
         if(Greenfoot.isKeyDown("w"))
@@ -59,6 +60,7 @@ public class Robot extends Actor
         if(isTouching(wall.class))
         {
             setLocation(48,50);
+            Greenfoot.playSound("hurt.wav");
         }
         
     }
@@ -66,9 +68,18 @@ public class Robot extends Actor
         if(isTouching(block.class))
         {
             setLocation(48,50);
+            Greenfoot.playSound("hurt.wav");
         }
         
     }
+    public void detectHome(){
+        if(isTouching(home.class))
+        {
+            setLocation(48,50);
+            Greenfoot.playSound("yipee.wav");
+        }
+    }
+    
     public void animate(){
         if(getImage()==robotimage1)
         setImage(robotimage2);
@@ -80,11 +91,12 @@ public class Robot extends Actor
         //testEndGame();
         //showStatus();
     }
-    public void pizzaEaten(){
+    public void eatPizza(){
         if(isTouching(pizza.class)){
             removeTouching(pizza.class);
-            pizzaEaten++;
+            Greenfoot.playSound("eat.wav");
         }
     }
+
 
 }
