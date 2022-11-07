@@ -25,12 +25,13 @@ public class Robot extends Actor
         //setImage(robotimage1);
         //int pizzaEaten = 0;      
     }
-    private int speed=1;
+    private int speed=4;
     public void act()
     {
         robotMovement();
         detectWallCollision();
         detectBlockCollision();
+        pizzaEaten();
     }
     public void robotMovement(){
         if(Greenfoot.isKeyDown("w"))
