@@ -58,22 +58,23 @@ public class RobotWorld extends World
         home home = new home();
         addObject(home,751,552);
 
-        ScorePanel scorePanel = new ScorePanel();
-        addObject(scorePanel,71,554);
-        
+
         pizza pizza = new pizza();
         addObject(pizza,720,46);
-        
+
         pizza pizza2 = new pizza();
         addObject(pizza2,443,38);
-        
+
         pizza pizza3 = new pizza();
         addObject(pizza3,183,302);
-        
+
         pizza pizza4 = new pizza();
         addObject(pizza4,682,312);
-        
+
         pizza pizza5 = new pizza();
         addObject(pizza5,417,537);
+
+        ScorePanel scorePanel = new ScorePanel();
+        addObject(scorePanel,89,541);
     }
 }

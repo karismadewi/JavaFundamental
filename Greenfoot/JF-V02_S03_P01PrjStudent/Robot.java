@@ -15,7 +15,8 @@ public class Robot extends Actor
     
     private GreenfootImage robotimage1;
     private GreenfootImage robotimage2; 
-    private int liveCo = 3; 
+    private GreenfootImage gameover;
+    private int lifeCo = 3; 
     private int pizzaEaten = 0;
     private int score = 0;    
     
@@ -23,6 +24,7 @@ public class Robot extends Actor
     {
         robotimage1=new GreenfootImage("man01.png");
         robotimage2=new GreenfootImage("man02.png");
+        gameover=new GreenfootImage("gameover.png");
         //setImage(robotimage1);
         //int pizzaEaten = 0;      
     }
@@ -32,7 +34,9 @@ public class Robot extends Actor
         robotMovement();
         detectWallCollision();
         detectBlockCollision();
+        detectHome();
         eatPizza();
+        showStatus();
     }
     public void robotMovement(){
         if(Greenfoot.isKeyDown("w"))
@@ -61,6 +65,7 @@ public class Robot extends Actor
         {
             setLocation(48,50);
             Greenfoot.playSound("hurt.wav");
+            removeLife();
         }
         
     }
@@ -69,14 +74,18 @@ public class Robot extends Actor
         {
             setLocation(48,50);
             Greenfoot.playSound("hurt.wav");
+            removeLife();
         }
         
     }
     public void detectHome(){
-        if(isTouching(home.class))
+        if(isTouching(home.class)&& pizzaEaten==5)
         {
-            setLocation(48,50);
+            increaseScore();
             Greenfoot.playSound("yipee.wav");
+            setLocation(48,50);
+            pizzaEaten=0;
+            
         }
     }
     
@@ -86,17 +95,37 @@ public class Robot extends Actor
         else
         setImage(robotimage1);
     }
-    public void lifeCounter(){
-        liveCo=liveCo--;
-        //testEndGame();
-        //showStatus();
+    public void removeLife(){
+        lifeCo--;
+        testEndGame();
+        showStatus();
     }
     public void eatPizza(){
         if(isTouching(pizza.class)){
             removeTouching(pizza.class);
             Greenfoot.playSound("eat.wav");
+            pizzaEaten++;
         }
     }
+    public void testEndGame(){
+        if(lifeCo==0){
+            setImage(gameover);
+            Greenfoot.stop();
+            }
+    }
+    public void increaseScore(){
+        if(pizzaEaten==5){
+            score++;
+        }
+        showStatus();
+    }
+    public void showStatus(){
+        getWorld().showText("Lives : "+lifeCo,89,510);
+        getWorld().showText("Pizza : "+pizzaEaten,89,540);
+        getWorld().showText("Score : "+score,89,565);
+    }
+
+
 
 
 }
