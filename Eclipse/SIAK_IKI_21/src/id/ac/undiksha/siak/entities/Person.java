@@ -6,8 +6,8 @@ public abstract class Person {
 	private boolean gender;
 	
 	public Person() {
-		this.name 		= "<ivalid name>";
-		this.address 	= "<ivalid address>";
+		this.name		= "<invalid name>";
+		this.address	= "<invalid address>";
 	}
 	
 	public Person(String name, String address, boolean gender) {
@@ -16,6 +16,7 @@ public abstract class Person {
 		this.address 	= address;
 		this.gender 	= gender;
 	}
+	
 	public String getName() {
 		return name;
 	}

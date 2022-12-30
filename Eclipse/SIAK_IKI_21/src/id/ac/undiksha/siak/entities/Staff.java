@@ -1,59 +1,36 @@
 package id.ac.undiksha.siak.entities;
 
-public class Staff {
+public class Staff extends Person{
 	private String nip;
-	private String name;
-	private boolean gender;
-	private String address;
 	private String unit;
 	
 	public Staff() {
-		this.name 		= "<ivalid name>";
-		this.nip 		= "<ivalid nip>";
-		this.address 	= "<ivalid address>";
-		this.unit 	= "<invalid Unit>";
+		super();
+		this.nip  = "<invalid nip>";
+		this.unit = "<invalid Unit>";
 	}
 	
 	public void printAllInfo() {
-		System.out.println("Nip	: " 	+ this.nip);
-		System.out.println("Name: " 	+ this.name);
-		System.out.println("Address: " 	+ this.address);
-		System.out.println("Unit: " 	+ this.unit);
+		System.out.println("Name			: " 	+ getName());
+		System.out.println("Address			: " 	+ getAddress());
+		System.out.println("Nip			: " 		+ this.nip);
+		System.out.println("Unit			: " 	+ this.unit);
 		
-		System.out.println("Gender: " +
-				(gender ? "Male" : "Female"));
+		System.out.println("Gender			: " +
+				(getGender() ? "Male" : "Female"));
 	}
-	public Staff(String nip, String name, boolean gender, String address, String unit) {
-		super();
-		this.nip 		= nip;
-		this.name 		= name;
-		this.gender 	= gender;
-		this.address 	= address;
-		this.unit 		= unit;
+	
+	public Staff(String name, String address, boolean gender, String nip,  String unit) {
+		super(name, address, gender);
+		this.nip 	= nip;
+		this.unit 	= unit;
 	}
+	
 	public String getNip() {
 		return nip;
 	}
 	public void setNip(String nip) {
 		this.nip = nip;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public boolean isGender() {
-		return gender;
-	}
-	public void setGender(boolean gender) {
-		this.gender = gender;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
 	}
 	public String getUnit() {
 		return unit;

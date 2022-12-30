@@ -1,71 +1,45 @@
 package id.ac.undiksha.siak.entities;
 
-public class Lecturer {
+public class Lecturer extends Person {
 	private String nip;
-	private String name;
-	private String address;
-	private boolean gender;
 	private String studyProgram;
 	private String departement;
 	private String faculty;
 	
 	public Lecturer() {
-		this.name 			= "<invalid name>";
+		super();
 		this.nip 			= "<invalid nip>";
-		this.address 		= "<invalid address>";
 		this.studyProgram 	= "<invalid Study Program>";
 		this.departement 	= "<invalid Departement>";
 		this.faculty 		= "<invalid Faculty>";
 	}
 	
 	public void printAllInfo() {
-		System.out.println("Nip: " 				+ this.nip);
-		System.out.println("Name: " 			+ this.name);
-		System.out.println("Address: " 			+ this.address);
-		System.out.println("Study Program: " 	+ this.studyProgram);
-		System.out.println("Departement: " 		+ this.departement);
-		System.out.println("Fakulty: " 			+ this.faculty);
+		System.out.println("Nip			: " 				+ this.nip);
+		System.out.println("Name			: " 			+ getName());
+		System.out.println("Address			: " 			+ getAddress());
+		System.out.println("Study Program		: " 	+ this.studyProgram);
+		System.out.println("Departement		: " 		+ this.departement);
+		System.out.println("Fakulty			: " 			+ this.faculty);
 		
-		System.out.println("Gender: " +
-				(gender ? "Male" : "Female"));
+		System.out.println("Gender			: " +
+				(getGender() ? "Male" : "Female"));
 	}
 	
-	public Lecturer(String nip, String name, String address, boolean gender, String studyProgram, String departement,
+	public Lecturer(String name, String address, boolean gender, String nip, String studyProgram, String departement,
 			String faculty) {
-		super();
+		super(name, address, gender);
 		this.nip 			= nip;
-		this.name 			= name;
-		this.address 		= address;
-		this.gender 		= gender;
 		this.studyProgram 	= studyProgram;
 		this.departement 	= departement;
 		this.faculty 		= faculty;
 	}
-
 
 	public String getNip() {
 		return nip;
 	}
 	public void setNip(String nip) {
 		this.nip = nip;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public boolean isGender() {
-		return gender;
-	}
-	public void setGender(boolean gender) {
-		this.gender = gender;
 	}
 	public String getStudyProgram() {
 		return studyProgram;
@@ -84,7 +58,5 @@ public class Lecturer {
 	}
 	public void setFaculty(String faculty) {
 		this.faculty = faculty;
-	}
-	
- 
+	} 
 }
